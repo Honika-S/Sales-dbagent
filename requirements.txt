@@ -1,0 +1,10 @@
+langchain==0.3.4
+pandas==2.2.3
+streamlit==1.37.1
+sentence-transformers==2.2.2
+scikit-learn==1.5.0
+numpy==1.26.1
+matplotlib==3.9.2
+bson
+torch==2.0.1 
+pymongo==4.10.1
