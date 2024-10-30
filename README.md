@@ -37,3 +37,6 @@ To connect the application to MongoDB, follow these steps:
    - Choose **Connect your application**.
    - Copy the connection string (URI) provided and replace `<username>` and `<password>` with your MongoDB Atlas username and password. Ensure the `retryWrites=true&w=majority` part is included.
 
+# Ensure Up-to-Date Libraries
+1.Outdated dependencies could cause compatibility issues. Update your libraries, especially langchain, by running:
+pip install --upgrade langchain pymongo sentence-transformers
