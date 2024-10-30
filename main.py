@@ -102,31 +102,29 @@ if "access_granted" in st.session_state and st.session_state.access_granted and 
     # Fetch data for visualization
     df = fetch_data(collection)
     
-    # Check if DataFrame is empty after filtering
-    if df.empty:
+    # Filter columns for numeric data
+    numeric_fields = df.select_dtypes(include=[np.number]).columns.tolist()
+    
+    if not numeric_fields:
         st.warning("No numeric data available for visualization.")
     else:
-        # Get column names dynamically from the DataFrame
-        field_names = df.columns.tolist()
-
-        # Selectbox for field visualization
-        field = st.selectbox("Select Field to Visualize:", field_names)
+        # Select a numeric field to visualize
+        field = st.selectbox("Select Field to Visualize:", numeric_fields)
         plot_type = st.selectbox("Select Plot Type:", ['Histogram', 'Boxplot'])
         bins = st.slider("Number of Bins (for Histogram):", min_value=5, max_value=50, value=10)
 
         # Generate the visualization
         if st.button("Generate Visualization"):
-            df = df.dropna(subset=[field])  # Drop rows where the selected field is NaN
             plt.figure(figsize=(10, 6))
 
             if plot_type == 'Histogram':
-                plt.hist(df[field], bins=bins, color='skyblue', edgecolor='black')
+                plt.hist(df[field].dropna(), bins=bins, color='skyblue', edgecolor='black')
                 plt.xlabel(field.capitalize())
                 plt.ylabel("Frequency")
                 plt.title(f"{field.capitalize()} Distribution")
 
             elif plot_type == 'Boxplot':
-                plt.boxplot(df[field], vert=False, patch_artist=True)
+                plt.boxplot(df[field].dropna(), vert=False, patch_artist=True)
                 plt.xlabel(field.capitalize())
                 plt.title(f"{field.capitalize()} Boxplot")
 
