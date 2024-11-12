@@ -10,7 +10,7 @@ This project is a Streamlit application that allows users to interact with data 
 - **Pandas**: For data manipulation and analysis.
 - **MongoDB**: As the database for storing and retrieving Airbnb listings data.
 - **LangChain**: For handling embeddings and LLaMA model interactions.
-- **Sentence Transformers**: To generate embeddings for text queries and descriptions.
+
 
 
 ## Set Up MongoDB
@@ -39,4 +39,4 @@ To connect the application to MongoDB, follow these steps:
 
 ## Ensure Up-to-Date Libraries
 1.Outdated dependencies could cause compatibility issues. Update your libraries, especially langchain, by running:
-pip install --upgrade langchain pymongo sentence-transformers
+pip install --upgrade langchain pymongo 
